@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="JerseyGo - Football jerseys and sportswear.">
+<title>JerseyGo | Premium Jerseys</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <a class="logo" href="#home">Jersey<span>Go</span></a>
+    <nav>
+      <a href="#home">Home</a><a href="#shop">Shop</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" onclick="openCart()">🛒 Cart <b id="cartCount">0</b></button>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">JERSEYS • SPORTSWEAR • STYLE</p>
+      <h1>Wear the game.<br><span>Own the moment.</span></h1>
+      <p class="hero-copy">Shop premium football jerseys for your favourite clubs and players. Easy ordering, clear prices and a smooth mobile shopping experience.</p>
+      <div class="hero-actions"><a class="btn primary" href="#shop">Shop jerseys</a><a class="btn ghost" href="#contact">Contact us</a></div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-ball">⚽</div>
+      <p>NEW SEASON</p><h3>Football Collection</h3><span>Explore the latest styles</span>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+ <div class="container trust-grid">
+  <div><b>⚡ Fast ordering</b><span>Simple checkout flow</span></div>
+  <div><b>📦 Quality jerseys</b><span>Multiple styles & sizes</span></div>
+  <div><b>📱 Mobile friendly</b><span>Shop from any device</span></div>
+ </div>
+</section>
+
+<section id="shop" class="section">
+ <div class="container">
+  <div class="section-head">
+   <div><p class="eyebrow">OUR COLLECTION</p><h2>Find your jersey</h2></div>
+   <div class="controls"><input id="search" type="search" placeholder="Search jerseys..." oninput="renderProducts()"><select id="category" onchange="renderProducts()"><option value="all">All teams</option><option value="Real Madrid">Real Madrid</option><option value="Barcelona">Barcelona</option><option value="Portugal">Portugal</option><option value="Brazil">Brazil</option><option value="Italy">Italy</option><option value="Manchester United">Manchester United</option></select></div>
+  </div>
+  <div id="products" class="product-grid"></div>
+ </div>
+</section>
+
+<section id="about" class="about section">
+ <div class="container about-grid">
+  <div><p class="eyebrow">ABOUT JERSEYGO</p><h2>Your jersey. Your team. Your style.</h2></div>
+  <div><p>JerseyGo is a local jersey store focused on football fans. Browse the collection, choose your size, add items to your cart and submit your order details online.</p><p class="muted">Replace this text with the shop owner's final description before publishing.</p></div>
+ </div>
+</section>
+
+<section id="contact" class="section contact">
+ <div class="container">
+  <p class="eyebrow">GET IN TOUCH</p><h2>Visit or contact us</h2>
+  <div class="contact-grid">
+   <div class="contact-card"><span>📍</span><h3>Store</h3><p>Aks Plaza, Kumaramputhur,<br>Mannarkkad, Kerala</p></div>
+   <div class="contact-card"><span>📞</span><h3>Phone</h3><p>8921563953</p></div>
+   <div class="contact-card"><span>📸</span><h3>Instagram</h3><p>@jerseygo.in</p></div>
+   <div class="contact-card"><span>✉️</span><h3>Email</h3><p>jerseygo2026@gmail.com</p></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="container footer"><b>Jersey<span>Go</span></b><span>© 2026 JerseyGo. All rights reserved.</span><a href="#home">Back to top ↑</a></div></footer>
+
+<div id="overlay" class="overlay" onclick="closeCart(event)">
+ <aside class="drawer" onclick="event.stopPropagation()">
+  <div class="drawer-head"><h2>Your cart</h2><button onclick="closeCart()">✕</button></div>
+  <div id="cartItems"></div>
+  <div class="cart-bottom">
+   <div class="total"><span>Total</span><b id="cartTotal">₹0</b></div>
+   <button class="btn primary full" onclick="openCheckout()">Proceed to order</button>
+  </div>
+ </aside>
+</div>
+
+<div id="checkout" class="modal-wrap">
+ <div class="modal">
+  <button class="modal-close" onclick="closeCheckout()">✕</button>
+  <p class="eyebrow">ORDER DETAILS</p><h2>Complete your order</h2>
+  <div id="orderSummary" class="summary"></div>
+  <form onsubmit="submitOrder(event)">
+   <label>Name<input id="customerName" required placeholder="Your name"></label>
+   <label>Phone<input id="customerPhone" required inputmode="tel" placeholder="Your phone number"></label>
+   <label>Address<textarea id="customerAddress" required placeholder="Delivery address"></textarea></label>
+   <label>Notes <textarea id="customerNotes" placeholder="Size preferences, delivery notes, etc."></textarea></label>
+   <button class="btn primary full" type="submit">Place order</button>
+  </form>
+  <p class="small-note">Demo checkout: this page creates an order summary. Connect a backend/database or your preferred order service before using it for real customer orders.</p>
+ </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
